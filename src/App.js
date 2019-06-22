@@ -1,26 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import TopRow from './components/TopRow';
+import MiddleRow from './components/MiddleRow';
+import BottomRow from './components/BottomRow';
+import Bio from './components/Bio';
+import Projects from './components/Projects';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      page: "home",
+      width: window.innerWidth
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener("resize", () => {
+      console.log("window changed!");
+      this.setState({width: window.innerWidth})
+  })
+}
+
+  render () {
+    if (this.state.width > 768) {
+      return (
+        <>
+        <TopRow />
+        <MiddleRow />
+        <BottomRow />
+        </>
+      )
+    }
+    else {
+      return (
+        <>
+        <Bio />
+        <Projects />
+        </>
+      )
+    }
+  }
 }
 
 export default App;
