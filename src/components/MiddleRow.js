@@ -4,11 +4,11 @@ import Bio from './Bio';
 
 const MiddleRow = function (props) {
     return (
-        <>
+        <row>
         <Project name="node-bot" />
         <Bio />
         <Project name="backpack" />
-        </>
+        </row>
     )
 }
 
